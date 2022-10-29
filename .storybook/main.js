@@ -1,8 +1,5 @@
 module.exports = {
-  stories: [
-    '../stories/**/*.stories.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   /** Expose public folder to storybook as static */
   staticDirs: ['../public'],
   addons: [
@@ -13,15 +10,5 @@ module.exports = {
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-webpack5',
-  },
-  typescript: {
-    check: false,
-    checkOptions: {},
-    reactDogen: false,
-    reactDogenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) =>
-        prop.parent ? !/node_modules/.test(prop.parent.fileName) : true,
-    },
   },
 };
