@@ -1,6 +1,7 @@
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import * as NextImage from 'next/image';
 import '../pages/globals.css';
+import { AuthProvider } from '../state/auth/AuthContext';
 import '../styles/globals.css';
 const BREAKPOINTS_INT = {
   xs: 375,
@@ -28,6 +29,14 @@ const customViewports = Object.fromEntries(
 
 // Allow Storybook to handle Next's <Image> component
 const OriginalNextImage = NextImage.default;
+
+export const decorators = [
+  (Story) => (
+    <AuthProvider>
+      <Story />
+    </AuthProvider>
+  ),
+];
 
 Object.defineProperty(NextImage, 'default', {
   configurable: true,
