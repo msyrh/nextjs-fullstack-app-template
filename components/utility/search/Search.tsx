@@ -1,15 +1,17 @@
 /** Ini akan mempermudah untuk membuat jenis kartu lain seperti Photocard dll */
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 export interface ISearch {}
 
 const Search: React.FC<ISearch> = () => {
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState<string>();
   return (
     <form
       className="flex flex-col items-center gap-y-5"
       onSubmit={(e) => {
         e.preventDefault();
-        alert(`Action requested. Search for term: ${searchTerm}`);
+        router.push(`/results?search=${searchTerm}`);
       }}
     >
       <input
